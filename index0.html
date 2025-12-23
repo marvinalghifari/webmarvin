@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Someone Special</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Dancing+Script:wght@500;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+
+        /* Global Styles */
+
+*{
+    font-family:'Poppins', sans-serif;
+}
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        body{
+        min-height:100vh;
+        background:
+            radial-gradient(circle at top left, rgba(255,255,255,0.35), transparent 40%),
+            radial-gradient(circle at bottom right, rgba(255,255,255,0.25), transparent 45%),
+            linear-gradient(135deg,#ff9a9e 0%,#fad0c4 100%);
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        overflow-x:hidden;
+        position:relative;
+    }
+
+        body::before{
+        content:"";
+        position:absolute;
+        inset:0;
+        background-image:
+            radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px);
+        background-size: 28px 28px;
+        pointer-events:none;
+        z-index:0;
+    }
+
+        /* --- EFEK HUJAN HATI CSS --- */
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) scale(0.5);
+                opacity: 0;
+            }
+        }
+
+        .heart-fall {
+            position: absolute;
+            top: -50px;
+            color: #ff6b6b;
+            font-size: 1.5rem;
+            animation: fall 10s linear infinite;
+            user-select: none;
+            pointer-events: none;
+            z-index: 9999;
+        }
+        /* ---------------------------------- */
+
+        .container{
+            width:100%;
+            max-width:900px;
+            padding:20px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* Page Styling */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .page{
+            width:100%;
+            max-width:700px;
+            background: linear-gradient(
+                135deg,
+                #ffe5e8 0%,
+                #ffb3c1 100%
+            );
+            border-radius:20px;
+            padding:30px;
+            box-shadow:
+                0 18px 40px rgba(255,71,87,.45);
+            animation:fadeIn .8s ease-out;
+            position:relative;
+            z-index:2;
+        }
+
+        .page::before{
+            content:"";
+            position:absolute;
+            inset:8px;
+            border-radius:18px;
+            padding:2px;
+            background:linear-gradient(135deg,#ff6b6b,#ffb3c1,#ff6b6b);
+            -webkit-mask:
+                linear-gradient(#fff 0 0) content-box,
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+                    mask-composite: exclude;
+        }
+
+
+        .page{
+            width:100%;
+            max-width:700px;
+            background: linear-gradient(
+                135deg,
+                #ffe5e8 0%,
+                #ffb3c1 100%
+            );
+            border-radius:20px;
+            padding:30px;
+            box-shadow:
+                0 18px 40px rgba(255,71,87,.45);
+            animation:fadeIn .8s ease-out;
+            position:relative;
+            z-index:2;
+}
+
+
+        .blob{
+            position:absolute;
+            width:280px;
+            height:280px;
+            background:rgba(255,255,255,.18);
+            border-radius:50%;
+            filter: blur(40px);
+            z-index:0;
+        }
+
+        .blob.top{
+            top:-80px;
+            left:-80px;
+        }
+
+        .blob.bottom{
+            bottom:-100px;
+            right:-100px;
+        }
+
+        .login-title,
+            h1,h2{
+                font-family:'Playfair Display', serif;
+                letter-spacing:1px;
+            }
+
+        /* Login Page */
+        #login-page {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .login-subtitle{
+            font-family:'Dancing Script', cursive;
+            line-height:1.9;
+            font-size:1.05rem;
+            font-size:1rem;
+            color:#f85a5a;
+            margin-bottom:20px;
+            font-style:italic;
+            opacity:.9;
+        }
+
+        .login-hint{
+            margin-top:15px;
+            font-size:.85rem;
+            color:#f84f4f;
+            opacity:.8;
+        }
+
+        .heart-icon {
+            width: 80px;
+            height: 80px;
+            background-color: #ff6b6b;
+            transform: rotate(45deg);
+            margin: 20px;
+            position: relative;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1) rotate(45deg); }
+            50% { transform: scale(1.1) rotate(45deg); }
+            100% { transform: scale(1) rotate(45deg); }
+        }
+
+        .heart-icon:before,
+        .heart-icon:after {
+            content: '';
+            width: 80px;
+            height: 80px;
+            background-color: #ff6b6b;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .heart-icon:before {
+            top: -40px;
+            left: 0;
+        }
+
+        .heart-icon:after {
+            top: 0;
+            left: -40px;
+        }
+
+        .login-title {
+            color: #ff6b6b;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-form {
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: bold;
+        }
+
+        input{
+            width: 100%;
+            padding: 14px 15px;
+            border: 2px solid #ffd6d6;
+            border-radius: 12px;
+            font-size: 1rem;
+            background: #fff7f7;
+        }
+
+        input:hover{
+            background:#fff;
+        }
+
+        input:focus {
+            border-color: #ff6b6b;
+            outline: none;
+            box-shadow: 0 0 5px rgba(255, 107, 107, 0.5);
+        }
+
+        /* --- EFEK GLOW PADA BUTTON --- */
+        .btn {
+            background-color: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            width: 100%;
+            margin-top: 10px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            font-family:'Poppins', sans-serif;
+            font-weight:600;
+            letter-spacing:.5px;
+        }
+
+        /* ===== BACKGROUND LOVE / MAWAR ===== */
+        .bg-decor{
+            position:fixed;
+            inset:0;
+            z-index:0;
+            pointer-events:none;
+            overflow:hidden;
+        }
+
+        .bg-decor span{
+            position:absolute;
+            font-size:60px;            /* ⬅️ lebih kecil */
+            opacity:0.40;              /* ⬅️ jelas */
+            filter: blur(0.3px);
+            animation: float 22s ease-in-out infinite;
+            text-shadow: 0 0 15px rgba(255,255,255,0.6);
+        }
+            .bg-decor span:nth-child(1){ top:5%; left:5%;}
+            .bg-decor span:nth-child(2){ top:15%; left:15%;}
+            .bg-decor span:nth-child(3){ top:25%; left:25%;}
+            .bg-decor span:nth-child(4){ top:35%; left:10%;}
+            .bg-decor span:nth-child(5){ top:45%; left:20%;}
+
+            .bg-decor span:nth-child(6){ top:10%; left:40%;}
+            .bg-decor span:nth-child(7){ top:20%; left:55%;}
+            .bg-decor span:nth-child(8){ top:30%; left:70%;}
+            .bg-decor span:nth-child(9){ top:40%; left:85%;}
+            .bg-decor span:nth-child(10){ top:50%; left:65%;}
+
+            .bg-decor span:nth-child(11){ top:60%; left:10%;}
+            .bg-decor span:nth-child(12){ top:70%; left:25%;}
+            .bg-decor span:nth-child(13){ top:80%; left:40%;}
+            .bg-decor span:nth-child(14){ top:90%; left:55%;}
+            .bg-decor span:nth-child(15){ top:65%; left:75%;}
+
+            .bg-decor span:nth-child(16){ top:15%; left:80%;}
+            .bg-decor span:nth-child(17){ top:30%; left:90%;}
+            .bg-decor span:nth-child(18){ top:55%; left:45%;}
+            .bg-decor span:nth-child(19){ top:75%; left:60%;}
+            .bg-decor span:nth-child(20){ top:85%; left:85%;}
+
+        @keyframes float{
+            0%{
+                transform:translateY(0) rotate(0deg);
+            }
+            50%{
+                transform:translateY(-30px) rotate(10deg);
+            }
+            100%{
+                transform:translateY(0) rotate(0deg);
+            }
+        }
+
+        .bg-decor span:nth-child(even){
+            animation-duration: 26s;
+        }
+        .bg-decor span:nth-child(odd){
+            animation-duration: 20s;
+        }
+
+        /* PASTIKAN CARD DI ATAS */
+        .container, .page{
+            position:relative;
+            z-index:2;
+        }
+
+        .btn:hover{
+            background-color: #ff4757;
+            transform: translateY(-3px) scale(1.02);
+            box-shadow:
+                0 8px 25px rgba(255,71,87,.45),
+                0 0 20px rgba(255,107,107,.6);
+        }
+
+        /* ---------------------------------- */
+
+        /* Text Page */
+        .text-content {
+            font-family:'Poppins', sans-serif;
+            line-height: 1.9;
+            font-size: 1.05rem;
+            color: #4a4a4a;
+            text-align: justify;          /* 🔥 RATA KANAN KIRI */
+            text-justify: inter-word;     /* biar spasi kata rapi */
+            border-right: .15em solid #ff6b6b;
+            white-space: pre-wrap;
+            overflow: hidden; 
+            margin: 0 auto; 
+            letter-spacing: .3px;        /* dikurangi biar justify lebih natural */
+        }
+
+        /* --- FOTO 2 KOLOM 1:1 --- */
+        .photo-pair {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 30px;
+        }
+
+        .photo-pair img {
+            width: 100%;
+            aspect-ratio: 1 / 1;     /* 🔥 RASIO 1:1 */
+            object-fit: cover;
+            border-radius: 14px;
+            box-shadow: 0 10px 25px rgba(255,107,107,.35);
+            transition: transform .4s ease, box-shadow .4s ease;
+        }
+
+        .photo-pair img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 35px rgba(255,107,107,.55);
+        }
+
+        /* RESPONSIVE HP */
+        @media (max-width: 600px) {
+            .photo-pair {
+                grid-template-columns: 1fr;
+            }
+        }
+
+            /* FADE IN FOTO SETELAH TEKS */
+            .photo-pair {
+                opacity: 0;
+                transform: translateY(20px);
+                transition: opacity .8s ease, transform .8s ease;
+            }
+
+            .photo-pair.show {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #ff6b6b; }
+        }
+
+        .finished-typing {
+            border-right: none !important;
+        }
+
+        .text-content p {
+            margin-bottom: 8px; 
+            text-indent: 30px;   /* paragraf masuk ke dalam */
+        }
+        .responsive-img {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(255, 1, 1, 0.1);
+            cursor: pointer;
+            transition: transform 0.5s ease-out, box-shadow 0.5s ease-out;
+        }
+
+        .responsive-img:hover {
+            transform: scale(1.05) rotate(1deg);
+            box-shadow: 0 15px 35px rgba(255, 107, 107, 0.5);
+        }
+        /* -------------------------------------- */
+
+        /* Navigation Buttons */
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .nav-btn {
+            background-color: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .nav-btn:hover {
+            background-color: #ff4757;
+            transform: translateY(-1px);
+        }
+
+        .paragraph-image {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* FOTO DALAM PARAGRAF (16:9 & RESPONSIVE) */
+        .paragraph-block {
+            margin: 10px 0;
+            display: flex;
+            justify-content: center;
+            transition:margin .3s ease;
+        }
+
+        .paragraph-image {
+            width: 100%;
+            max-width: 520px;      /* batas biar tidak kegedean */
+            aspect-ratio: 16 / 9;  /* 🔥 RASIO 16:9 */
+            object-fit: cover;
+            border-radius: 14px;
+            box-shadow: 0 10px 25px rgba(255,107,107,.35);
+        }
+
+        /* HP */
+        @media (max-width: 600px) {
+            .paragraph-image {
+                max-width: 100%;
+            }
+        }
+
+        /* ZOOM-IN FOTO PARAGRAF */
+        .paragraph-image {
+            opacity: 0;
+            transform: scale(1.12);
+            transition: 
+                opacity 0.9s ease,
+                transform 1.2s ease;
+        }
+
+        /* Saat aktif */
+        .paragraph-image.show {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .paragraph-image.show {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+    </style>
+</head>
+
+<body>
+        <!-- BACKGROUND DECOR -->
+    <div class="bg-decor">
+        <span>💗</span><span>🌹</span><span>💞</span><span>🌸</span><span>💖</span>
+        <span>🌹</span><span>💗</span><span>🌸</span><span>💞</span><span>💖</span>
+        <span>🌹</span><span>💗</span><span>🌸</span><span>💞</span><span>💖</span>
+        <span>🌹</span><span>💗</span><span>🌸</span><span>💞</span><span>💖</span>
+    </div>
+
+    <div class="blob top"></div>
+    <div class="blob bottom"></div>
+    <div class="container">
+
+        <div id="login-page" class="page">
+            <div class="heart-icon"></div>
+            <h1 class="login-title">HALO TUAN PUTRI</h1>
+        <p class="login-subtitle">
+            Satu tanggal, satu cerita, satu hati 🤍
+        </p>
+
+
+            <form class="login-form" onsubmit="login(event)">
+                <div class="form-group">
+                    <label for="date">Tanggal Spesial Kita</label>
+                    <input type="date" id="date" value="2025-12-02" required>
+                </div>
+
+                <button type="submit" class="btn">Masuk ke Hati Saya</button>
+                <p class="login-hint">💗 Rahasia hanya untuk kita 💗</p>
+            </form>
+        </div>
+
+        <audio id="romanticMusic" loop>
+    <source src="index4.mpeg" type="audio/mpeg">
+</audio>
+
+        <div id="text-page" class="page hidden">
+            <div id="typewriter-text" class="text-content">
+
+                <p>
+                    HAI SAYANG PUNYA MAS VIN YANG CANTIK, LUCU, IMUP BANGETTTT MESKIPUN SUKA TENGIL SAMA TANTRUM DIKIT MAS VIN TETAP SUKA SAMA KAMU SAYANGGG 🤍
+
+<div class="paragraph-block">
+    <img src="index10.jpeg" class="paragraph-image">
+</div>
+                    
+                    setiap kali mas memikirkanmu, ada rasa hangat yang selalu menenangkan mas, seolah dunia berhenti sejenak hanya untuk memberi ruang pada namamu (cira).
+
+<div class="paragraph-block">
+    <img src="index6.jpeg" class="paragraph-image">
+</div>
+                    Mas ingin menyampaikan perasaan mas dengan jujur. Mas sangat mencintai km, dan ada rasa takut kehilangan bukan karena ketergantungan, tapi karena mas benar benar menghargai kehadiranmu dalam hidup mas. Kamu bukan sekadar bagian dari hari hari mas, tapi alasan kenapa mas ingin menjadi versi yang lebih baik setiap harinya. Mas minta maaf ya kalau selama ini sikap mas terkadang merepotkan atau menyulitkanmu, tapi percayalah, setiap langkah yang mas ambil selalu mas usahakan menjadi yang terbaik untuk kamu, dengan hati yang tulus dan niat yang serius.
+
+<div class="paragraph-block">
+    <img src="index5.jpeg" class="paragraph-image">
+</div>
+                    Mas paham hubungan tidak selalu berjalan mulus. Akan ada masa naik dan turun, bahagia dan lelah, tawa dan air mata. Namun apa pun keadaannya, mas ingin kita tetap saling memilih, bukan karena keadaan mudah, tapi karena kita saling berarti dan ingin memperjuangkan satu sama lain.
+
+<div class="paragraph-block">
+    <img src="index7.jpeg" class="paragraph-image">
+</div>
+                    Mas ingin tumbuh bersamamu, belajar membuatmu bahagia tanpa menghilangkan diri mas sendiri. Mas ingin berjalan di sisimu dalam waktu yang panjang, menua pelan-pelan dengan cerita yang kita bangun bersama. Mas menerima dirimu sepenuhnya, dengan segala kurang dan lebihmu. Sejak mas memilihmu sebagai pendamping hidup mas, mas percaya bahwa hubungan yang baik bukan tentang siapa yang paling benar, tapi siapa yang mau bertahan dan memperbaiki segalanya bersama. Jika ada yang kurang, kita lengkapi. Jika ada yang salah, kita benahi berdua, tanpa saling meninggalkan.
+
+<div class="paragraph-block">
+    <img src="index8.jpeg" class="paragraph-image">
+</div>
+                    Bersamamu, mas belajar bahwa hidup bukan tentang kesempurnaan, melainkan tentang rasa cukup dan syukur. Terlalu sibuk mencari yang sempurna hanya akan membuat kita kehilangan orang yang selalu ada. Mas tidak ingin memulai cerita baru dengan orang lain. Mas ingin terus mencintaimu, berkali kali, dalam versi terbaik dari diri mas hari ini, esok, dan seterusnya.
+                    
+<div class="paragraph-block">
+    <img src="index9.jpeg" class="paragraph-image">
+</div>
+                    Cinta memang tidak selalu tentang bahagia. Kadang ada kecewa dan perbedaan. Namun selama kita masih saling memberi ruang, waktu, dan komitmen, mas percaya hubungan ini akan tumbuh lebih kuat dari sekadar air mata, dan lebih dalam dari sekadar janji.
+
+                    Atapuuu cayaangg 🤍❤️‍🩹💞
+            </div>
+
+        <div class="photo-pair hidden" id="photoAfterText">
+            <img src="index3.jpeg">
+            <img src="index1.jpeg">
+        </div>
+
+
+            <div class="nav-buttons">
+                <button class="nav-btn" onclick="prevPage('text-page', 'login-page')">Kembali</button>
+                <button class="nav-btn" onclick="nextPage('text-page', 'photo-page')">Lanjut</button> 
+            </div>
+        </div>
+
+        <div id="photo-page" class="page hidden">
+            <h2 class="album-title" style="text-align:center; color:#ff6b6b;">LOVE YOU TUAN PUTRI</h2>
+            <p style="text-align:center; margin-bottom: 20px;">
+            Belajar kurangin emosinya yaa ❤️
+            </p>
+
+            <img src="index.jpeg" class="responsive-img" alt="WhatsApp Image">
+            <img src="index2.jpeg" class="responsive-img" alt="WhatsApp Image">
+
+            <div class="nav-buttons">
+                <button class="nav-btn" onclick="prevPage('photo-page', 'text-page')">Kembali</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- EFEK HUJAN HATI JS ---
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart-fall');
+            heart.innerHTML = '💖'; 
+
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 8 + 5 + 's'; 
+            heart.style.opacity = Math.random();
+            
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 10000); 
+        }
+
+        setInterval(createHeart, 300); 
+        // ----------------------------------
+
+        // Variabel untuk Typewriter Effect
+        let i = 0;
+        let fullTextContent = '';
+        let typewriterDiv;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            typewriterDiv = document.getElementById('typewriter-text');
+            if (typewriterDiv) {
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = typewriterDiv.innerHTML;
+                fullTextContent = tempDiv.innerHTML.trim();
+                typewriterDiv.innerHTML = '';
+                typewriterDiv.classList.add('finished-typing');
+            }
+        });
+
+    let musicPlayed = false;
+
+// --- EFEK TYPEWRITER JS ---
+function typeWriter() {
+
+    // 🎵 PUTAR MUSIK SEKALI SAJA, DARI AWAL
+    const music = document.getElementById("romanticMusic");
+    if (!musicPlayed && music) {
+        music.currentTime = 0;   // mulai dari detik 0
+        music.volume = 0.6;
+        music.play().catch(() => {});
+        musicPlayed = true;      // ⬅️ kunci supaya tidak ref
+    }
+
+    if (i < fullTextContent.length) {
+        const char = fullTextContent.charAt(i);
+
+        if (char === '<') {
+            const tagEnd = fullTextContent.indexOf('>', i);
+            if (tagEnd !== -1) {
+                typewriterDiv.innerHTML += fullTextContent.substring(i, tagEnd + 1);
+        setTimeout(() => {
+            const imgs = typewriterDiv.querySelectorAll('.paragraph-image:not(.show)');
+            imgs.forEach(img => img.classList.add('show'));
+        }, 120);
+
+        // AKTIFKAN ZOOM FOTO
+        setTimeout(() => {
+            const imgs = typewriterDiv.querySelectorAll('.paragraph-image:not(.show)');
+            imgs.forEach(img => img.classList.add('show'));
+        }, 100);
+                i = tagEnd + 1;
+            }
+
+        } else {
+            typewriterDiv.innerHTML += char;
+            i++;
+        }
+
+        setTimeout(typeWriter, 50);
+
+    } else {
+        typewriterDiv.classList.add('finished-typing');
+
+        // 🖼️ FOTO MUNCUL SETELAH TEKS SELESAI
+        const photos = document.getElementById("photoAfterText");
+        if (photos) {
+            photos.classList.remove("hidden");
+            setTimeout(() => {
+                photos.classList.add("show");
+            }, 300);
+        }
+    }
+}
+
+        // ----------------------------------
+
+        function login(e) {
+            e.preventDefault();
+            const dateInput = document.getElementById('date').value;
+            const correctPassword = "02122025";
+
+            const d = new Date(dateInput);
+            const day = String(d.getDate()).padStart(2, '0');
+            const month = String(d.getMonth() + 1).padStart(2, '0');
+            const year = d.getFullYear();
+            const userPassword = day + month + year;
+
+            if (userPassword === correctPassword) {
+                nextPage('login-page', 'text-page');
+            } else {
+                alert("Tanggal yang kamu masukkan tidak sesuai. Coba lagi.");
+            }
+        }
+
+        function nextPage(current, next) {
+            document.getElementById(current).classList.add("hidden");
+            document.getElementById(next).classList.remove("hidden");
+            window.scrollTo(0, 0);
+
+            // Jika pindah ke halaman teks, mulai Typewriter
+            if (next === 'text-page' && fullTextContent) {
+                typewriterDiv.innerHTML = '';
+                i = 0;
+                typewriterDiv.classList.remove('finished-typing');
+                typeWriter();
+            }
+        }
+
+        function prevPage(current, prev) {
+            document.getElementById(current).classList.add("hidden");
+            document.getElementById(prev).classList.remove("hidden");
+            window.scrollTo(0, 0);
+            
+            if (current === 'text-page') {
+                i = fullTextContent.length;
+                typewriterDiv.classList.add('finished-typing');
+            }
+        }
+    </script>
+</body>
+</html>
